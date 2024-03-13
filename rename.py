@@ -16,7 +16,7 @@ if compilation_result.returncode != 0:
     exit()
 
 
-run_result = subprocess.run(os.path.join(folder_name, './generator'),cwd=folder_name,text=True)       
+run_result = subprocess.run('./generator',cwd=folder_name,text=True)       
 if run_result.returncode != 0:
     print(f"Error running generator.")
 
@@ -40,6 +40,6 @@ for i in range(1, 21):
     input_file = os.path.join(folder_name, f"{i}.in")
     output_file = os.path.join(folder_name, f"{i}.out")
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
-        run_result = subprocess.run(os.path.join(folder_name, './solution'), stdin=infile, stdout=outfile, text=True)
+        run_result = subprocess.run(os.path.join(folder_name, 'solution'), stdin=infile, stdout=outfile, text=True)
         if run_result.returncode != 0:
-            print(f"Error running solution on {input_file}.")
+            print(f"Error running solution on {input_file}.") 
