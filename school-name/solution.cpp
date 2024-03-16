@@ -24,7 +24,7 @@ int main()
         }
         else if(y<1993)
         {
-            cout<<"Nanjing Aeronautical Institut"<<endl;
+            cout<<"Nanjing Aeronautical Institute"<<endl;
         }   
         else
         {
