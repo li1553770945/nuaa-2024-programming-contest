@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 int a[100010];
@@ -6,6 +7,9 @@ int b[100010];
 int f[100010];
 
 void solve() {
+    memset(a,0,sizeof(a));
+    memset(b,0,sizeof(b));
+    memset(f,0,sizeof(f));
     int n;
     cin>>n;
     for(int i=1;i<=n;i++)
