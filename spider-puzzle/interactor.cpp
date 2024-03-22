@@ -119,6 +119,7 @@ Point GetNextPoint2(Point current,Point solder)
 {
     int x = current.x;
     int y = current.y;
+    Point ans;
     if(x==1)
     {
         if(y==n)
@@ -129,14 +130,19 @@ Point GetNextPoint2(Point current,Point solder)
         {
             y++;
         }
+        ans.x = x;
+        ans.y = y;
     }
     else
     {
         x--;
+        ans.x = x;
+        ans.y = y;
     }
-    Point ans;
-    ans.x = x;
-    ans.y = y;
+    if(ans==solder)
+    {
+        ans = GetNextPoint(current,solder);
+    }
     return ans;
 }
 
@@ -175,7 +181,7 @@ int main(int argc, char *argv[]) {
         }
         if(a == last_b)
         {
-            quitf(_ok, "You have catched the spider");
+            quitf(_ok, "You have catched the spider!");
         }
         else
         {
@@ -186,6 +192,10 @@ int main(int argc, char *argv[]) {
             else
             {
                 b = GetNextPoint(last_b,a);
+            }
+            if(a == b)
+            {
+                quitf(_fail, "System Error! The spider go to the solder pos.");
             }
             cout << b.x << " " << b.y << endl;
             fflush(stdout);
