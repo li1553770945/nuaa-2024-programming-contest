@@ -107,9 +107,19 @@ int main()
     }
 
     // (1,n)
+    self.x = 0;
+    self.y = 1;
     cout<<0<<" "<<1<<endl;
     fflush(stdout);
     cin>>enemy.x>>enemy.y; 
+
+    if(IsOneStep(self,enemy))
+    {
+        cout<<enemy.x<<" "<<enemy.y<<endl;
+        fflush(stdout);
+        return 0;
+
+    }
 
     self.x = 1;
     if(n%2==1)
@@ -132,7 +142,7 @@ int main()
     cout<<self.x<<" "<<self.y<<endl;
     fflush(stdout);
 
-    while(true)
+    for(int i=1;i<=3*n;i++)
     {
         cin>>enemy.x>>enemy.y;
         self = GetNextPoint(self,enemy);

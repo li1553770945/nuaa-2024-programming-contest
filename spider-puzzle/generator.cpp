@@ -16,6 +16,6 @@ int main(int argc, char* argv[])
             n = rnd.next(9000, 1'0'000);
         }
         out[n] = true;
-        cout<<n<<endl;
+        cout<<test_index<<" "<<n<<endl;
     }
 }

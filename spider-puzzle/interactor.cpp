@@ -115,11 +115,41 @@ Point GetNextPoint(Point current,Point solder)
 
 }
 
+Point GetNextPoint2(Point current,Point solder)
+{
+    int x = current.x;
+    int y = current.y;
+    if(x==1)
+    {
+        if(y==n)
+        {
+            y--;
+        }
+        else
+        {
+            y++;
+        }
+    }
+    else
+    {
+        x--;
+    }
+    Point ans;
+    ans.x = x;
+    ans.y = y;
+    return ans;
+}
+
 int main(int argc, char *argv[]) {
     setName("Interactor Spider Puzzle");
     registerInteraction(argc, argv);
- 
+    int t = inf.readInt();
+    inf.readSpace();
     n = inf.readInt();
+    if(t>16 && n%2 ==1)
+    {
+        n--;
+    }
     cout<<n<<endl;
     Point last_a,last_b;
     last_a.x = n;
@@ -134,7 +164,6 @@ int main(int argc, char *argv[]) {
         ouf.readSpace();
         a.y = ouf.readInt();
         ouf.readEoln();
-        quitf(_wa, "You do not catch the spider in 3n steps!");
         if(!IsLegal(a))
         {
             quitf(_wa, "You move is not legal!");
@@ -150,7 +179,14 @@ int main(int argc, char *argv[]) {
         }
         else
         {
-            b = GetNextPoint(last_b,a);
+            if(t>16)
+            {
+                b = GetNextPoint2(last_b,a);
+            }
+            else
+            {
+                b = GetNextPoint(last_b,a);
+            }
             cout << b.x << " " << b.y << endl;
             fflush(stdout);
         }
