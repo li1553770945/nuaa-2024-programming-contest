@@ -24,6 +24,8 @@ if run_result.returncode != 0:
 
 # 步骤1: 重命名文件
 for i in range(1, 21):
+    if not os.path.exists(os.path.join(folder_name, f"{i}")):
+        break
     old_name = os.path.join(folder_name, f"{i}")
     new_name = os.path.join(folder_name, f"{i}.in")
     os.rename(old_name, new_name)
@@ -38,6 +40,8 @@ if compilation_result.returncode != 0:
 # 步骤3: 执行程序并保存输出
 for i in range(1, 21):
     input_file = os.path.join(folder_name, f"{i}.in")
+    if not os.path.exists(input_file):
+        break
     output_file = os.path.join(folder_name, f"{i}.out")
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         run_result = subprocess.run(os.path.join(folder_name, 'solution'), stdin=infile, stdout=outfile, text=True)
